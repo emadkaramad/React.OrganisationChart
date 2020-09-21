@@ -1,0 +1,99 @@
+$border-size: 2px;
+$border-height: 2rem;
+$border-color: #666;
+
+.organisation-chart {
+    display: flex;
+
+    > .organisation-chart__item-container,
+    .organisation-chart__items > .organisation-chart__item-container {
+        display       : flex;
+        flex          : 0;
+        flex-direction: column;
+        align-items   : center;
+
+        > .organisation-chart__item-before-lines,
+        > .organisation-chart__item-after-lines {
+            display: flex;
+            flex   : 0;
+            width: 100%;
+
+            .organisation-chart__item-line-left,
+            .organisation-chart__item-line-right {
+                flex  : 1;
+                height: $border-height;
+            }
+        }
+
+        &:not(:first-child):not(:last-child):not(:only-child) {
+            > .organisation-chart__item-before-lines {
+                .organisation-chart__item-line-left {
+                    border-right: $border-size solid $border-color;
+                }
+
+                .organisation-chart__item-line-left,
+                .organisation-chart__item-line-right {
+                    border-top: $border-size solid $border-color;
+                }
+            }
+        }
+
+        &:last-child:not(:only-child) {
+            > .organisation-chart__item-before-lines {
+                .organisation-chart__item-line-left {
+                    border-right: $border-size solid $border-color;
+                    border-top : $border-size solid $border-color;
+                }
+            }
+        }
+
+        &:first-child:not(:only-child) {
+            > .organisation-chart__item-before-lines {
+                .organisation-chart__item-line-right {
+                    border-left: $border-size solid $border-color;
+                    border-top : $border-size solid $border-color;
+                }
+            }
+        }
+
+        &:only-child {
+            > .organisation-chart__item-before-lines {
+                .organisation-chart__item-line-right {
+                    border-left: $border-size solid $border-color;
+                }
+            }
+        }
+
+        .organisation-chart__item-after-lines {
+            .organisation-chart__item-line-right {
+                border-left: $border-size solid $border-color;
+            }
+    }
+
+        > .organisation-chart__item-content {
+            flex   : 0;
+        }
+
+        > .organisation-chart__items {
+            display       : flex;
+            flex-direction: row;
+            flex: 0;
+        }
+    
+    }
+}
+
+.organisation-chart__default-item-template {
+    border : $border-size solid $border-color;
+    margin : 0 1rem;
+    padding: 1rem;
+    text-align: center;
+}
+
+.organisation-chart__rounded-item-template {
+    border : $border-size solid $border-color;
+    border-radius: 8px;
+    margin : 0 1rem;
+    padding: 1rem;
+    text-align: center;
+}
